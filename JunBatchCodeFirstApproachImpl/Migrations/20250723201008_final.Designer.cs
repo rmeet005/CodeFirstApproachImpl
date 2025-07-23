@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JunBatchCodeFirstApproachImpl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250721043122_newemp")]
-    partial class newemp
+    [Migration("20250723201008_final")]
+    partial class final
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,9 @@ namespace JunBatchCodeFirstApproachImpl.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Mid")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,6 +80,8 @@ namespace JunBatchCodeFirstApproachImpl.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Mid");
 
                     b.ToTable("Employees");
                 });
@@ -109,8 +114,21 @@ namespace JunBatchCodeFirstApproachImpl.Migrations
                     b.Navigation("manager");
                 });
 
+            modelBuilder.Entity("JunBatchCodeFirstApproachImpl.Models.Employee", b =>
+                {
+                    b.HasOne("JunBatchCodeFirstApproachImpl.Models.Manager", "manager")
+                        .WithMany("employees")
+                        .HasForeignKey("Mid")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("manager");
+                });
+
             modelBuilder.Entity("JunBatchCodeFirstApproachImpl.Models.Manager", b =>
                 {
+                    b.Navigation("employees");
+
                     b.Navigation("emps");
                 });
 #pragma warning restore 612, 618

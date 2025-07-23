@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JunBatchCodeFirstApproachImpl.Models
 {
@@ -12,5 +13,9 @@ namespace JunBatchCodeFirstApproachImpl.Models
         public string Role { get; set; }
 
         public double salary { get; set; }
+        [ForeignKey("manager")]
+        public int Mid { get; set; }
+
+        public Manager manager { get; set; }
     }
 }

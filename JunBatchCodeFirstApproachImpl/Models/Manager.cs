@@ -9,5 +9,6 @@ namespace JunBatchCodeFirstApproachImpl.Models
         public string Mname { get; set; }
 
         public List<Emp> emps { get; set; }
+        public List<Employee> employees { get; set; }
     }
 }

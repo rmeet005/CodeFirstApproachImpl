@@ -3,8 +3,7 @@
 $(document).ready(function () {
     console.log("ready");
     fetchemp();
-    getemp();
-
+    getmanager();
 });
 
 $("#btn").click(function () {
@@ -41,7 +40,7 @@ $("#savebtn").click(function () {
 function fetchemp()
 {
     $.ajax({
-        url: '/Employee/fetchemp',
+        url: '/Employee/getemp',
         method: "Get",
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
@@ -55,6 +54,8 @@ function fetchemp()
                 obj += `<td>${item.email}</td>`
                 obj += `<td>${item.role}</td>`
                 obj += `<td>${item.salary}</td>`
+                obj += `<td>${item.mid}</td>`
+                obj += `<td>${item.mname}</td>`
                 obj += '<td><a class="btn btn-sm btn-danger" onclick="delemp(' + item.id + ')">Delete</a> <a class="btn btn-sm btn-success" onclick="editemp(' + item.id + ')">Edit</a></td>'
                 obj += '</tr>'
             });
@@ -82,9 +83,9 @@ function delemp(id) {
     }
 }
 
-function getemp() {
+function getmanager() {
     $.ajax({
-        url: '/Home/fetchdatas',
+        url: '/Manager/fetchmanager',
         method: "Get",
         dataType: 'json',
         contentType: 'application/json;charset=utf-8',
@@ -92,16 +93,12 @@ function getemp() {
             var obj = '';
             $.each(response, function (Index, item) {
                 obj += '<tr>'
-                obj += `<td>${item.eid}</td>`
-                obj += `<td>${item.ename}</td>`
-                obj += `<td>${item.email}</td>`
-                obj += `<td>${item.esalary}</td>`
                 obj += `<td>${item.mid}</td>`
                 obj += `<td>${item.mname}</td>`
                 obj+= '<td><a class="btn-sm btn-btn-danger">delete</a></td>'
                 obj += '</tr>'
             });
-            $("#testdata").html(obj)
+            $("#managerdata").html(obj)
         },
         error: function () {
             alert('error')
@@ -119,13 +116,15 @@ function editemp(id)
         success: function (response) {
             $("#exampleModal").modal('show');
             $("#savebtn").hide();
-            $("#empid").hide();
+            
             $("#updatebtn").show();
             $("#Id").val(response.id);
             $("#Name").val(response.name);
             $("#Email").val(response.email);
             $("#Role").val(response.role);
             $("#Salary").val(response.salary);
+            $("#ManagerId").val(response.mid);
+            $("#ManagerName").val(response.mname);
         },
         error: function () {
             alert("not found");

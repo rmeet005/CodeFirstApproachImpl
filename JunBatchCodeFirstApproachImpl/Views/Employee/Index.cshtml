@@ -10,6 +10,10 @@
             <th scope="col">email</th>
             <th scope="col">role</th>
             <th scope="col">salary</th>
+            <th scope="col">ManagerId</th>
+            <th scope="col">ManagerName</th>
+            <th scope="col">Action</th>
+
         </tr>
     </thead>
     <tbody id="mydata">
@@ -53,6 +57,20 @@
                         <label>Salary</label>
                         <input type="text" name="salary" id="Salary" class="form-control" >
                     </div>
+                    <div class="form-group">
+                        <label>ManagerId</label>
+                        <input type="text" name="salary" id="ManagerId" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="manager" class="form-label">Manager</label>
+                        <select id="dropdown" class="form-control" name="Mid">
+                            @foreach (var d in @ViewBag.managers)
+                            {
+                                <option value="@d.Value">@d.Text</option>
+                            }
+                        </select>
+
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -70,16 +88,12 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">email</th>
-            <th scope="col">salary</th>
             <th scope="col">mid</th>
             <th scope="col">mname</th>
             <th scope="col">action</th>
         </tr>
     </thead>
-    <tbody id="testdata">
+    <tbody id="managerdata">
     </tbody>
 </table>
 

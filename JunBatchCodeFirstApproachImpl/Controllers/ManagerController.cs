@@ -28,5 +28,10 @@ namespace JunBatchCodeFirstApproachImpl.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public IActionResult fetchmanager(Manager M)
+        {
+            var mans = db.Manager.ToList();
+            return Json(mans);
+        }
     }
 }
