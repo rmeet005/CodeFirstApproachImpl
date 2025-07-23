@@ -1,0 +1,38 @@
+﻿@model List<Emp>
+
+<a class="btn btn-info" asp-action="AddEmployee">Add Emp</a>
+
+<form method="post">
+    <input type="text" name="str">
+    <input type="submit" value="Search">
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var d in Model)
+        {
+            <tr>
+                <th scope="row">@d.eid</th>
+                <td>@d.ename</td>
+                <td>@d.email</td>
+                <td>@d.esalary</td>
+                <td>
+                    <a class="btn btn-sm btn-danger" asp-action="DelEmp" asp-route-id="@d.eid" onclick="return confirm('Are You Sure?')">Delete</a>
+
+                    <a class="btn btn-sm btn-success" asp-action="EditEmp" asp-route-id="@d.eid">Edit</a>
+                </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

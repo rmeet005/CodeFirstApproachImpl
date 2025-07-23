@@ -1,0 +1,13 @@
+﻿@model Emp
+
+<form method="post">
+    Name <input type="text" class="form-control" asp-for="ename"/><br />
+
+    Email <input type="text" class="form-control" asp-for="email" /><br />
+
+    Salary <input type="text" class="form-control" asp-for="esalary" /><br />
+
+    Manager 
+    <select class="form-control" asp-for="Mid" asp-items="@ViewBag.managers"></select>
+    <input type="submit" value="Save" class="btn btn-primary">
+</form>
