@@ -39,7 +39,7 @@
                 <form id="addemployee">
                     <div class="form-group" id="empid">
                         <label>Id</label>
-                        <input type="text" disabled class="form-control" name="Id" id="Id" aria-describedby="emailHelp" placeholder="Enter name">
+                        <input type="text" readonly class="form-control" name="Id" id="Id" aria-describedby="emailHelp" placeholder="Enter name">
                     </div>
                     <div class="form-group">
                         <label >Name</label>
@@ -57,17 +57,17 @@
                         <label>Salary</label>
                         <input type="text" name="salary" id="Salary" class="form-control" >
                     </div>
-                    <div class="form-group">
+                    @* <div class="form-group">
                         <label>ManagerId</label>
                         <input type="text" name="salary" id="ManagerId" class="form-control">
-                    </div>
+                    </div> *@
                     <div class="mb-3">
                         <label for="manager" class="form-label">Manager</label>
-                        <select id="dropdown" class="form-control" name="Mid">
-                            @foreach (var d in @ViewBag.managers)
+                        <select id="Mid" class="form-control" asp-items="@ViewBag.managers" name="Mid">
+                           @*  @foreach (var d in @ViewBag.managers)
                             {
                                 <option value="@d.Value">@d.Text</option>
-                            }
+                            } *@
                         </select>
 
                     </div>

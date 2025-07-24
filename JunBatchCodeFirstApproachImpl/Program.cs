@@ -1,4 +1,6 @@
 using JunBatchCodeFirstApproachImpl.Data;
+using JunBatchCodeFirstApproachImpl.Filter;
+using JunBatchCodeFirstApproachImpl.Models;
 using JunBatchCodeFirstApproachImpl.Repository;
 using JunBatchCodeFirstApproachImpl.Service;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +19,13 @@ builder.Services.AddDbContext<ApplicationDbContext>
     );
 
 builder.Services.AddScoped<IEmpService, EmpService>();
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add<globalexe>();
+});
+
+builder.Services.AddAutoMapper(typeof(MapperData));
 
 var app = builder.Build();
 

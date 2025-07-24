@@ -1,4 +1,5 @@
-﻿using JunBatchCodeFirstApproachImpl.Data;
+﻿using AutoMapper;
+using JunBatchCodeFirstApproachImpl.Data;
 using JunBatchCodeFirstApproachImpl.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -9,11 +10,12 @@ namespace JunBatchCodeFirstApproachImpl.Controllers
     public class EmployeeController : Controller
     {
         ApplicationDbContext db;
+        IMapper mapper;
 
-
-        public EmployeeController(ApplicationDbContext db)
+        public EmployeeController(ApplicationDbContext db, IMapper mapper)
         {
             this.db = db;
+            this.mapper = mapper;
         }
         public IActionResult Index()
         {
@@ -39,22 +41,24 @@ namespace JunBatchCodeFirstApproachImpl.Controllers
             var data = db.Employees.Find(empid);
             db.Employees.Remove(data);
             db.SaveChanges();
-            return Json(data);
+            return Json("");
         }
 
         public IActionResult getemp()
         {
-            var data = db.Employees.Include(x => x.manager).Select(e => new EmployeeDto
-            {
-                Id = e.Id,
-                Name = e.Name,
-                email = e.email,
-                Role = e.Role,
-                salary = e.salary,
-                Mid = e.Mid,
-                Mname = e.manager.Mname
-            });
-            return Json(data);
+            var data=db.Employees.Include(x=>x.manager).ToList();
+            var mapdata = mapper.Map<List<EmployeeDto>>(data);
+            //var data = db.Employees.Include(x => x.manager).Select(e => new EmployeeDto
+            //{
+            //    Id = e.Id,
+            //    Name = e.Name,
+            //    email = e.email,
+            //    Role = e.Role,
+            //    salary = e.salary,
+            //    Mid = e.Mid,
+            //    Mname = e.manager.Mname
+            //});
+            return Json(mapdata);
         }
 
         public IActionResult editemp(int empid)
@@ -62,17 +66,18 @@ namespace JunBatchCodeFirstApproachImpl.Controllers
             var data = db.Employees.Find(empid);
             return Json(data);
         }
-        public IActionResult updateEmp(UEmployeeDto e)
+        [HttpPost]
+        public IActionResult updateEmp(Employee emp)
         {
-            var emp = new Employee
-            {
-                Id = e.Id,
-                Name = e.Name,
-                email = e.email,
-                Role = e.Role,
-                salary = e.salary,
-                Mid = e.Mid
-            };
+            //var emp = new Employee
+            //{
+            //    Id = e.Id,
+            //    Name = e.Name,
+            //    email = e.email,
+            //    Role = e.Role,
+            //    salary = e.salary,
+            //    Mid = e.Mid
+            //};
             db.Employees.Update(emp);
             db.SaveChanges();
             return Json("");

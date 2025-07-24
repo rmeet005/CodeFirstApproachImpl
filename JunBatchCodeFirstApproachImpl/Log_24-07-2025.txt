@@ -1,0 +1,25 @@
+
+                    
+                    Log Created At: 24-07-2025 10:59 AM
+                    Controller:   Manager
+                    Action:        delmanager
+                    Message:    An error occurred while saving the entity changes. See the inner exception for details.
+                    Inner Message:  The DELETE statement conflicted with the REFERENCE constraint "FK_Employees_Manager_Mid". The conflict occurred in database "ajaxtest", table "dbo.Employees", column 'Mid'.
+                    
+                    Log Created At: 24-07-2025 10:59 AM
+                    Controller:   Manager
+                    Action:        delmanager
+                    Message:    An error occurred while saving the entity changes. See the inner exception for details.
+                    Inner Message:  The DELETE statement conflicted with the REFERENCE constraint "FK_Employees_Manager_Mid". The conflict occurred in database "ajaxtest", table "dbo.Employees", column 'Mid'.
+                    
+                    Log Created At: 24-07-2025 11:07 AM
+                    Controller:   Manager
+                    Action:        delmanager
+                    Message:    An error occurred while saving the entity changes. See the inner exception for details.
+                    Inner Message:  The DELETE statement conflicted with the REFERENCE constraint "FK_Employees_Manager_Mid". The conflict occurred in database "ajaxtest", table "dbo.Employees", column 'Mid'.
+                    
+                    Log Created At: 24-07-2025 11:08 AM
+                    Controller:   Manager
+                    Action:        delmanager
+                    Message:    An error occurred while saving the entity changes. See the inner exception for details.
+                    Inner Message:  The DELETE statement conflicted with the REFERENCE constraint "FK_Employees_Manager_Mid". The conflict occurred in database "ajaxtest", table "dbo.Employees", column 'Mid'.

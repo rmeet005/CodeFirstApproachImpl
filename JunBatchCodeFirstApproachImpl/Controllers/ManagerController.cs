@@ -33,5 +33,13 @@ namespace JunBatchCodeFirstApproachImpl.Controllers
             var mans = db.Manager.ToList();
             return Json(mans);
         }
+
+        public IActionResult delmanager(int mid)
+        {
+            var data = db.Manager.Find(mid);
+            db.Manager.Remove(data);
+            db.SaveChanges();
+            return Json(data);
+        }
     }
 }

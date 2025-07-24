@@ -5,7 +5,7 @@
 namespace JunBatchCodeFirstApproachImpl.Migrations
 {
     /// <inheritdoc />
-    public partial class final : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
