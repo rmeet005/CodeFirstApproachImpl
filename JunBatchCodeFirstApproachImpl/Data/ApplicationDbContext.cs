@@ -13,5 +13,6 @@ namespace JunBatchCodeFirstApproachImpl.Data
         public DbSet<Manager> Manager { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Student> Student { get; set; }
     }
 }

@@ -95,6 +95,31 @@ namespace JunBatchCodeFirstApproachImpl.Migrations
                     b.ToTable("Manager");
                 });
 
+            modelBuilder.Entity("JunBatchCodeFirstApproachImpl.Models.Student", b =>
+                {
+                    b.Property<int>("Sid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Sid"));
+
+                    b.Property<string>("Scourse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sphoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("fees")
+                        .HasColumnType("float");
+
+                    b.HasKey("Sid");
+
+                    b.ToTable("Student");
+                });
+
             modelBuilder.Entity("JunBatchCodeFirstApproachImpl.Models.Emp", b =>
                 {
                     b.HasOne("JunBatchCodeFirstApproachImpl.Models.Manager", "manager")

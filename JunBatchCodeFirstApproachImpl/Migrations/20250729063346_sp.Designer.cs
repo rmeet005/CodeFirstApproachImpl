@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JunBatchCodeFirstApproachImpl.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250721043122_newemp")]
-    partial class newemp
+    [Migration("20250729063346_sp")]
+    partial class sp
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -96,6 +96,31 @@ namespace JunBatchCodeFirstApproachImpl.Migrations
                     b.HasKey("Mid");
 
                     b.ToTable("Manager");
+                });
+
+            modelBuilder.Entity("JunBatchCodeFirstApproachImpl.Models.Student", b =>
+                {
+                    b.Property<int>("Sid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Sid"));
+
+                    b.Property<string>("Scourse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Sphoto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("fees")
+                        .HasColumnType("float");
+
+                    b.HasKey("Sid");
+
+                    b.ToTable("Student");
                 });
 
             modelBuilder.Entity("JunBatchCodeFirstApproachImpl.Models.Emp", b =>

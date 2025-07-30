@@ -1,0 +1,52 @@
+﻿@model StudentModal
+
+@{
+    ViewData["Title"] = "Addstudent";
+}
+
+<h1>Addstudent</h1>
+
+<h4>Student</h4>
+<hr />
+<form asp-action="AddStudent" asp-controller="SP" enctype="multipart/form-data" method="post">
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Addstudent">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Sname" class="control-label"></label>
+                <input asp-for="Sname" class="form-control" />
+                <span asp-validation-for="Sname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Scourse" class="control-label"></label>
+                <input asp-for="Scourse" class="form-control" />
+                <span asp-validation-for="Scourse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fees" class="control-label"></label>
+                <input asp-for="fees" class="form-control" />
+                <span asp-validation-for="fees" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sphoto" class="control-label"></label>
+                <input asp-for="Sphoto" type="file" class="form-control" />
+                <span asp-validation-for="Sphoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</form>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="Fetchstudent">View Students</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

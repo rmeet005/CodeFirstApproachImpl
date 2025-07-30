@@ -1,0 +1,36 @@
+﻿<a asp-action="AddStudent" class="btn btn-primary"> Add Student</a>
+
+<br />
+@model List<Student>
+@*
+<p>
+    <a class="btn btn-primary" href="@Url.Action("AddStudent", "SP")">Add New Student</a>
+</p> *@
+<h1>Student List</h1>
+<br />
+<br />
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Fees</th>
+            <th>Photo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Sname</td>
+                <td>@student.Scourse</td>
+                <td>@student.fees</td>
+                <td>
+                    <img src="~/@student.Sphoto" alt="Photo" width="80" height="80" />
+                </td>
+                <td><a asp-action="EditStudent" asp-route-id="@student.Sid" class="btn btn-sm btn-warning">Edit</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
